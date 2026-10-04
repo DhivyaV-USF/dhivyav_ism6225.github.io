@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7f2">
+  <title>Marketday — Grocery Sales</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4.8-2.2-7.2-6.2-6.6-12C10 9 13 11.8 13 16"/><path d="M12 21c.1-6.3 2.7-10.4 7.6-12.8.3 5.9-1.8 9.9-6.6 12"/></svg>
+        </div>
+        <div class="brand-name">market<span>day</span></div>
+      </div>
+      <p class="nav-label">Workspace</p>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-item active" data-nav="Overview"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="10" width="8" height="11" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/></svg>Overview</button>
+        <button class="nav-item" data-nav="Sales"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 19V5M4 19h17"/><path d="m7 15 4-4 3 2 6-7"/></svg>Sales</button>
+        <button class="nav-item" data-nav="Products"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg>Products</button>
+        <button class="nav-item" data-nav="Inventory"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4.5 7.8 7.5 4.3 7.5-4.3M12 12v9"/></svg>Inventory<span class="nav-badge">3</span></button>
+        <button class="nav-item" data-nav="Customers"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Customers</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.6 9a2.5 2.5 0 0 1 4.8 1c0 1.7-2.4 2-2.4 3.5M12 17h.01"/></svg></div>
+          <strong>Need a hand?</strong>
+          <p>Visit our help center for tips and answers.</p>
+          <button type="button" data-toast="Help center is coming soon.">Visit help center →</button>
+        </div>
+        <div class="profile">
+          <div class="avatar">JD</div>
+          <div><strong>Jamie Dawson</strong><small>Store manager</small></div>
+          <svg style="margin-left:auto;color:#8d958b" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 10 5 5 5-5"/></svg>
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div class="crumb">Workspace <span style="padding:0 7px;color:#b2b8b0">/</span> <b>Overview</b></div>
+        <div class="top-actions">
+          <select class="store-select" aria-label="Choose store">
+            <option>All stores</option>
+            <option>Greenfield Market</option>
+            <option>Riverside Grocer</option>
+          </select>
+          <button class="icon-button" type="button" aria-label="Notifications" data-toast="You're all caught up.">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><i class="notify-dot"></i>
+          </button>
+        </div>
+      </header>
+
+      <section class="heading-row">
+        <div>
+          <h1>Good morning, Jamie <span aria-hidden="true">☀️</span></h1>
+          <p class="subtitle">Here's what's happening with your grocery sales today.</p>
+        </div>
+        <div class="heading-actions">
+          <select id="period" class="period-select" aria-label="Select reporting period">
+            <option value="7">Last 7 days</option>
+            <option value="30" selected>Last 30 days</option>
+            <option value="90">Last 90 days</option>
+          </select>
+          <button id="export" class="export-button" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 15v5h14v-5"/></svg>
+            Export report
+          </button>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Sales summary">
+        <article class="card metric">
+          <div class="metric-top"><span class="metric-label">Total revenue</span><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 1.9-1.4L22 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="18" cy="21" r="1"/></svg></span></div>
+          <div class="metric-value" data-metric="revenue">$48,294</div>
+          <div class="metric-foot"><span class="change">↑ 12.8%</span> vs. previous period</div>
+        </article>
+        <article class="card metric">
+          <div class="metric-top"><span class="metric-label">Orders</span><span class="metric-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 8h14l1 13H4L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span></div>
+          <div class="metric-value" data-metric="orders">2,846</div>
+          <div class="metric-foot"><span class="change">↑ 8.2%</span> vs. previous period</div>
+        </article>
+        <article class="card metric">
+          <div class="metric-top"><span class="metric-label">Average order value</span><span class="metric-icon lime"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span></div>
+          <div class="metric-value" data-metric="aov">$16.98</div>
+          <div class="metric-foot"><span class="change">↑ 4.3%</span> vs. previous period</div>
+        </article>
+        <article class="card metric">
+          <div class="metric-top"><span class="metric-label">Items sold</span><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2M8 11h8"/></svg></span></div>
+          <div class="metric-value" data-metric="items">8,392</div>
+          <div class="metric-foot"><span class="change down">↓ 2.1%</span> vs. previous period</div>
+        </article>
+      </section>
+
+      <section class="chart-grid">
+        <article class="card panel">
+          <div class="panel-head">
+            <div><h2 class="panel-title">Sales overview</h2><p class="panel-subtitle">Revenue performance over time</p></div>
+            <div class="legend"><span><i></i>This period</span><span><i class="previous"></i>Previous period</span></div>
+          </div>
+          <div class="chart-wrap">
+            <svg id="sales-chart" viewBox="0 0 680 220" preserveAspectRatio="none" role="img" aria-label="Revenue trend chart"></svg>
+            <div class="chart-tooltip" id="chart-tooltip"></div>
+          </div>
+        </article>
+        <article class="card panel">
+          <div class="panel-head"><div><h2 class="panel-title">Sales by category</h2><p class="panel-subtitle">Revenue breakdown this month</p></div></div>
+          <div class="category-list">
+            <div class="category-row"><div class="category-icon">🥬</div><div><div class="category-name">Fresh produce</div><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div><div><div class="category-amount">$14,820</div><div class="category-share">31% of sales</div></div></div>
+            <div class="category-row"><div class="category-icon">🥛</div><div><div class="category-name">Dairy & eggs</div><div class="bar-track"><div class="bar-fill" style="width:63%;background:#a4bd7c"></div></div></div><div><div class="category-amount">$10,460</div><div class="category-share">22% of sales</div></div></div>
+            <div class="category-row"><div class="category-icon">🥖</div><div><div class="category-name">Bakery</div><div class="bar-track"><div class="bar-fill" style="width:48%;background:#e5ad70"></div></div></div><div><div class="category-amount">$7,215</div><div class="category-share">15% of sales</div></div></div>
+            <div class="category-row"><div class="category-icon">🥫</div><div><div class="category-name">Pantry</div><div class="bar-track"><div class="bar-fill" style="width:39%;background:#89aeb0"></div></div></div><div><div class="category-amount">$6,180</div><div class="category-share">13% of sales</div></div></div>
+            <div class="category-row"><div class="category-icon">🥩</div><div><div class="category-name">Meat & seafood</div><div class="bar-track"><div class="bar-fill" style="width:31%;background:#d48c7d"></div></div></div><div><div class="category-amount">$4,790</div><div class="category-share">10% of sales</div></div></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="card table-panel">
+          <div class="panel-head">
+            <div><h2 class="panel-title">Top-selling products</h2><p class="panel-subtitle">Your most popular items this month</p></div>
+            <button class="view-all" type="button" data-toast="Showing the top products for this period.">View all products →</button>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Product</th><th>Category</th><th>Units sold</th><th>Revenue</th><th>Stock</th></tr></thead>
+              <tbody>
+                <tr><td><div class="product-cell"><span class="product-emoji">🥑</span><span>Organic avocados<span class="sku">SKU 40291</span></span></div></td><td>Produce</td><td>684</td><td>$2,394</td><td><span class="status">In stock</span></td></tr>
+                <tr><td><div class="product-cell"><span class="product-emoji">🥛</span><span>Whole milk, 1 gal<span class="sku">SKU 10837</span></span></div></td><td>Dairy</td><td>592</td><td>$2,072</td><td><span class="status">In stock</span></td></tr>
+                <tr><td><div class="product-cell"><span class="product-emoji">🍞</span><span>Sourdough loaf<span class="sku">SKU 22014</span></span></div></td><td>Bakery</td><td>438</td><td>$1,971</td><td><span class="status stock-low">Low stock</span></td></tr>
+                <tr><td><div class="product-cell"><span class="product-emoji">🍓</span><span>Strawberries, 1 lb<span class="sku">SKU 40318</span></span></div></td><td>Produce</td><td>411</td><td>$1,644</td><td><span class="status">In stock</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <article class="card insight-panel">
+          <div class="panel-head"><div><h2 class="panel-title">Store insights</h2><p class="panel-subtitle">A little context for your numbers</p></div></div>
+          <div class="insight-banner">
+            <div class="insight-spark">✦</div>
+            <div><strong>Produce is having a great week</strong><p>Fresh produce sales are up 18% this week. Avocados are your top mover.</p></div>
+          </div>
+          <div class="insight-stat"><span>Best sales day</span><strong>Saturday · $2,840</strong></div>
+          <div class="insight-stat"><span>Returning customers</span><strong>64% <span class="positive">↑ 6%</span></strong></div>
+          <div class="insight-stat"><span>Low-stock products</span><strong>3 items <span style="color:#bc754c">Review →</span></strong></div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js" defer></script>
+</body>
+</html>
